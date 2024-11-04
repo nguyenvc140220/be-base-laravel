@@ -18,7 +18,3 @@ WORKDIR /var/www/html
 # php composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY ./laravel-app ./
-RUN rm -rf ./vendor
-RUN cp .env.example .env
-RUN composer install --ignore-platform-req=ext-zip
-RUN php artisan key:generate

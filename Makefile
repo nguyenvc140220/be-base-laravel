@@ -5,11 +5,15 @@ init:
 	@make build
 build:
 	docker compose down
-	docker compose up -d --build
+	docker compose up --build -d
+	docker compose cp .env.example .env
+	docker compose composer install --ignore-platform-req=ext-zip
+	docker compose php artisan key:generate
 	@make wait-for-mysql
 	docker compose exec app composer dump-autoload
 	docker compose exec app php artisan migrate:fresh
 	docker compose exec app php artisan db:seed
+	docker compose exec app php artisan jwt:secret
 	docker compose ps
 start:
 	docker compose up -d
