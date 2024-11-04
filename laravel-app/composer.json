@@ -6,7 +6,7 @@
     "authors": [
         {
             "name": "OACP Team",
-            "email": ""
+            "email": "oacp.team@pionero.io"
         }
     ],
     "keywords": [
@@ -17,7 +17,10 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.9",
+        "php-open-source-saver/jwt-auth": "^2.7",
+        "prettus/l5-repository": "^2.9"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -76,28 +79,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "funding": [],
-    "bin":,
-    "scripts-descriptions":,
-    "replace": {},
-    "dist": {},
-    "scripts-aliases":,
-    "archive":,
-    "readme": "",
-    "source": {},
-    "suggest": {},
-    "default-branch":,
-    "include-path":,
-    "provide": {},
-    "non-feature-branches":,
-    "_comment":,
-    "repositories":,
-    "time": "",
-    "abandoned":,
-    "support": {},
-    "target-dir": "",
-    "php-ext": {},
-    "homepage": "",
-    "conflict": {}
+    "prefer-stable": true
 }
