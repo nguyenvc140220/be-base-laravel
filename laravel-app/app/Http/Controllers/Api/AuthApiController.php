@@ -17,6 +17,29 @@ class AuthApiController extends Controller {
         $this->authService = $authService;
     }
 
+    /**
+     * @OA\Post(
+     *      path="/login",
+     *      tags={"Auth"},
+     *      summary="Login",
+     *      operationId="login",
+     *      @OA\RequestBody(
+     *          @OA\JsonContent(ref="#/components/schemas/LoginRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          ref="#/components/responses/bad_request_response"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          ref="#/components/responses/unauthorized_response"
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          ref="#/components/responses/login_success_response"
+     *      )
+     *  )
+     */
     public function login(LoginRequest $request): JsonResponse {
         try {
             $response = $this->authService->login($request->only(['email', 'password']));
@@ -27,6 +50,27 @@ class AuthApiController extends Controller {
         }
     }
 
+    /**
+     * @OA\Post(
+     *      path="/logout",
+     *      tags={"Auth"},
+     *      summary="Logout",
+     *      operationId="logout",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Response(
+     *          response=400,
+     *          ref="#/components/responses/bad_request_response"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          ref="#/components/responses/unauthorized_response"
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          ref="#/components/responses/logout_success_response"
+     *      )
+     *  )
+     */
     public function logout(): JsonResponse {
         try {
             $response = $this->authService->logout();
@@ -37,6 +81,27 @@ class AuthApiController extends Controller {
         }
     }
 
+    /**
+     * @OA\Post(
+     *      path="/refresh-token",
+     *      tags={"Auth"},
+     *      summary="Refresh Token",
+     *      operationId="refreshToken",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Response(
+     *          response=400,
+     *          ref="#/components/responses/bad_request_response"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          ref="#/components/responses/unauthorized_response"
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          ref="#/components/responses/login_success_response"
+     *      )
+     *  )
+     */
     public function refresh(): JsonResponse {
         try {
             $response = $this->authService->refreshToken();
