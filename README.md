@@ -19,15 +19,14 @@ A simple and clean boilerplate to start a new SPA project with authentication, u
 - [Vue I18n](https://vue-i18n.intlify.dev)
 - [Laravel Request Docs](https://github.com/rakutentech/laravel-request-docs)
 
-## Requirements
+## Environment
 
 - PHP 8.3.0
 - Laravel 11.x
 - Node 18
+- MySQL 8
 
 ## Demo
-
-## Structure
 
 ## Features
 
@@ -47,20 +46,7 @@ The following Sanctum features are implemented in this Vue SPA:
 - ✅ Frontend Blog
 - ✅ Automatic Api Documentation -- route /api-docs
 
-## ⚡️ How to install
-
-### Docker
-
-1. Install docker and docker-compose
-2. Install make
-3. Clone this repository
-4. Run `make init`: This command will build the docker image and run the container
-5. Run project in next times: `make start`
-6. Stop project: `make stop`
-
-## Project conventions
-
-### Project structure (updating...)
+## Structure
 
 Main folders:
 
@@ -70,7 +56,45 @@ Main folders:
 - Resource: formats the returned data
 - Model: represents the database table
 
-### Convention for Using HTTP Status Codes in API
+## ⚡️ How to install
+
+### Requirements
+
+Make sure the following are installed:
+
+- Docker Desktop
+- mkcert
+  [mkcert](https://www.howtoforge.com/how-to-create-locally-trusted-ssl-certificates-with-mkcert-on-ubuntu/)
+
+### Docker
+
+1. Clone this repository
+2. Run `make init`: This command will build the docker image and run the container
+3. Run project in next times: `make start`
+4. Stop project: `make stop`
+
+## Conventions
+
+### Command List
+
+- Lint: [Larastan](https://github.com/nunomaduro/larastan)の Lint Check
+
+```bash
+$ make lint
+```
+
+- Format: [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)の Format Check
+
+```bash
+$ make fmt
+```
+
+### Rule
+
+Follow this file:
+[Rules](https://gitlab.com/tuananh.pham3/base-php-laravel/-/blob/main/docs/policy.md)
+
+### HTTP Status Codes in API
 
 Below are some common conventions when building **RESTful API** or **GraphQL API**:
 
