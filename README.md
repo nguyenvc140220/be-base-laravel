@@ -1,41 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Project Base - OACP Team
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About the project
 
-# Code base laravel
-## Getting started
-### About the project
-This is a code base for a laravel project. It includes some common features that are used in most projects such as:
-- Authentication
-- Updating...
+A simple and clean boilerplate to start a new SPA project with authentication, user, roles, permissions management and more features. This boilerplate uses the following tools:
 
-### Environment
+[![](https://img.shields.io/badge/vue.js-v3.5-04C690.svg)](https://vuejs.org)
+[![](https://img.shields.io/badge/Laravel-v11.x-ff2e21.svg)](https://laravel.com)
+[![](https://img.shields.io/badge/bootstrap-v5.3-712cf9.svg)](https://getbootstrap.com)
+[![](https://img.shields.io/badge/axios-v1.7-5A29E4.svg)](https://axios-http.com)
+[![](https://img.shields.io/badge/vite-v5.0-646cff.svg)](https://vitejs.dev)
+
+- [Laravel 11.x](https://github.com/laravel/laravel)
+- [Laravel Sanctum](https://laravel.com/docs/11.x/sanctum)
+- [Vue 3](https://github.com/vuejs/vue)
+- [Vue Router](https://router.vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Vue I18n](https://vue-i18n.intlify.dev)
+- [Laravel Request Docs](https://github.com/rakutentech/laravel-request-docs)
+
+## Environment
+
 - PHP 8.3.0
 - Laravel 11.x
-### Run project with docker
-1. Install docker and docker-compose
-2. Install make
-3. Clone this repository
-4. Run `make init`: This command will build the docker image and run the container
-5. Run project in next times: `make start`
-6. Stop project: `make stop`
+- Node 18
+- MySQL 8
 
-## Project conventions
+## Demo
 
-### Project structure (updating...)
+## Features
+
+The following Sanctum features are implemented in this Vue SPA:
+
+- ✅ Login
+- ✅ Password Reset
+- ✅ Registration
+- ✅ Admin Panel
+- ✅ Profile Management
+- ✅ User Management
+- ✅ Roles Management
+- ✅ Permissions Management
+- ✅ Password Change
+- ✅ E-Mail Verification
+- ✅ Posts Management
+- ✅ Frontend Blog
+- ✅ Automatic Api Documentation -- route /api-docs
+
+## Structure
+
 Main folders:
+
 - Controller: receives HTTP requests from the client and decides what to do with them
 - Service: separates complex business logic from the controller. Instead of handling all logic in the controller, a service class will take care of this.
 - Repository: handles querying data from the database
 - Resource: formats the returned data
 - Model: represents the database table
 
-### Convention for Using HTTP Status Codes in API
+## ⚡️ How to install
+
+### Requirements
+
+Make sure the following are installed:
+
+- Docker Desktop
+- mkcert
+  [mkcert](https://www.howtoforge.com/how-to-create-locally-trusted-ssl-certificates-with-mkcert-on-ubuntu/)
+
+### Docker
+
+1. Clone this repository
+2. Run `make init`: This command will build the docker image and run the container
+3. Run project in next times: `make start`
+4. Stop project: `make stop`
+
+## Conventions
+
+### Command List
+
+- Lint: [Larastan](https://github.com/nunomaduro/larastan)の Lint Check
+
+```bash
+$ make lint
+```
+
+- Format: [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)の Format Check
+
+```bash
+$ make fmt
+```
+
+### Rule
+
+Follow this file:
+[Rules](https://gitlab.com/tuananh.pham3/base-php-laravel/-/blob/main/docs/policy.md)
+
+### HTTP Status Codes in API
 
 Below are some common conventions when building **RESTful API** or **GraphQL API**:
 
