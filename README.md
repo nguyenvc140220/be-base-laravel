@@ -124,3 +124,7 @@ Below are some common conventions when building **RESTful API** or **GraphQL API
 
 - **401 Unauthorized**: Missing or incorrect authentication information.
 - **403 Forbidden**: No permission to access the resource.
+
+## API documents
+View in the browser on /request-docs/
+https://github.com/rakutentech/laravel-request-docs?tab=readme-ov-file
