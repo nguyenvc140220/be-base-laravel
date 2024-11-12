@@ -49,6 +49,7 @@ return [
     'default_headers' => [
         'Content-Type' => 'application/json',
         'Accept' => 'application/json',
+        "Authorization" => "Bearer {token}",
     ],
 
     // By default, LRD group your routes by the first /path.
