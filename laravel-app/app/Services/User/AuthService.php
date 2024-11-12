@@ -2,7 +2,7 @@
 
 namespace App\Services\User;
 
-use App\Repositories\User\UserRepository;
+use App\Repositories\Contracts\UserRepository;
 use Exception;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;

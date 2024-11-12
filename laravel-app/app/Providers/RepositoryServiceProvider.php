@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\User\{UserRepository, UserRepositoryEloquent};
+use App\Repositories\{UserRepositoryEloquent};
+use App\Repositories\Contracts\{UserRepository};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider {
