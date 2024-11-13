@@ -4,12 +4,15 @@ namespace App\Http\Middleware;
 
 use App\Traits\ApiResponseTrait;
 use Closure;
+use Exception;
 use Illuminate\Http\Request;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\TokenExpiredException;
 use PHPOpenSourceSaver\JWTAuth\JWTAuth;
+use Symfony\Component\HttpFoundation\Response;
 
-class ApiAuthMiddleware {
+class ApiAuthMiddleware
+{
     use ApiResponseTrait;
 
     protected $jwt;
@@ -27,15 +30,20 @@ class ApiAuthMiddleware {
      *
      * @return mixed
      */
-    public function handle(Request $request, Closure $next) {
+    public function handle(Request $request, Closure $next, $role = null)
+    {
         try {
-            if (!$this->jwt->parseToken()->authenticate()) {
-                return $this->sendError('Unauthorized', 401);
+            $user = $this->jwt->parseToken()->authenticate();
+
+            if (!$user || (isset($role) && $user->role !== $role)) {
+                return $this->sendError('Unauthorized', Response::HTTP_UNAUTHORIZED);
             }
-        } catch ( TokenExpiredException $e ) {
-            return $this->sendError('Token is expired', 401);
-        } catch ( JWTException $e ) {
-            return $this->sendError('Token is invalid', 401);
+        } catch (TokenExpiredException $e) {
+            return $this->sendError('Token is expired', Response::HTTP_UNAUTHORIZED);
+        } catch (JWTException $e) {
+            return $this->sendError('Token is invalid', Response::HTTP_UNAUTHORIZED);
+        } catch (Exception $e) {
+            return $this->sendError($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
 
         return $next($request);
