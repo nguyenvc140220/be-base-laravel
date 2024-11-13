@@ -47,6 +47,58 @@ The following Sanctum features are implemented in this Vue SPA:
 - ✅ Automatic Api Documentation -- route /api-docs
 
 ## Structure
+```
+.laravel-app
+├── app
+│   ├── Enums
+│   ├── Exceptions
+│   ├── Http
+│   │   ├── Controllers
+│   │   │   ├── Api
+│   │   │   │   └── AuthApiController.php
+│   │   │   └── Controller.php
+│   │   ├── Middleware
+│   │   │   └── ApiAuthMiddleware.php
+│   │   ├── Requests
+│   │   │   └── Auth
+│   │   │       └── LoginRequest.php
+│   │   └── Resources
+│   │       └── Auth
+│   │           └── AuthResource.php
+│   ├── Models
+│   │   └── User.php
+│   ├── Providers
+│   │   ├── AppServiceProvider.php
+│   │   ├── RepositoryServiceProvider.php
+│   │   └── RouteServiceProvider.php
+│   ├── Repositories
+│   │   ├── Contracts
+│   │   │   └── UserRepository.php
+│   │   └── UserRepositoryEloquent.php
+│   ├── Services
+│   │   └── User
+│   │       └── AuthService.php
+│   └── Traits
+├── artisan
+├── bootstrap
+├── config
+├── database
+│   ├── factories
+│   ├── migrations
+│   └── seeders
+├── public
+├── resources
+│   ├── css
+│   ├── js
+│   └── views
+├── routes
+├── storage
+│   ├── app
+│   ├── framework
+│   └── logs
+├── tests
+└── vendor
+```
 
 Main folders:
 
