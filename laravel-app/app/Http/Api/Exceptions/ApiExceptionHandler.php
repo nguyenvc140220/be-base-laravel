@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Http\Api\Exceptions;
 
 use App\Traits\ApiExceptionTrait;
 

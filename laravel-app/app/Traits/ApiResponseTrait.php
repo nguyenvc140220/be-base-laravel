@@ -6,12 +6,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
-trait ApiResponseTrait {
-    public function sendResponse($data, $message = 'ok', $code = ResponseAlias::HTTP_OK, $extraData = []): JsonResponse {
+trait ApiResponseTrait
+{
+    public function sendResponse($data, $message = 'ok', $code = ResponseAlias::HTTP_OK, $extraData = []): JsonResponse
+    {
         return Response::json($this->makeResponse($message, $data, $extraData), $code);
     }
 
-    private function makeResponse($message = 'ok', $data = [], array $extraData = []): array {
+    private function makeResponse($message = 'ok', $data = [], array $extraData = []): array
+    {
         $response = ['data' => $data, 'message' => $message,];
 
         if (!empty($extraData)) {
@@ -21,11 +24,15 @@ trait ApiResponseTrait {
         return $response;
     }
 
-    public function sendError($message = '', $code = ResponseAlias::HTTP_BAD_REQUEST, $data = []): JsonResponse {
+    public function sendError($message = '', $code = ResponseAlias::HTTP_BAD_REQUEST, $data = []): JsonResponse
+    {
+        $code = $code ? $code : ResponseAlias::HTTP_BAD_REQUEST;
+
         return Response::json($this->makeError($message, $data), $code);
     }
 
-    private function makeError($message = '', $data = []): array {
+    private function makeError($message = '', $data = []): array
+    {
         return ['data' => $data, 'message' => $message];
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Api\AuthApiController;
+use App\Http\Api\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('login', [AuthApiController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
 Route::middleware(['auth'])
     ->group(function () {
-        Route::post('logout', [AuthApiController::class, 'logout']);
-        Route::post('refresh-token', [AuthApiController::class, 'refresh']);
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::post('refresh-token', [AuthController::class, 'refresh']);
 
         Route::get('user', function () {
             return [];

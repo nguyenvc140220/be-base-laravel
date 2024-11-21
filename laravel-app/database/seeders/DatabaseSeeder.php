@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Enums\UserRoleEnum;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Infrastructures\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
