@@ -48,65 +48,43 @@ The following Sanctum features are implemented in this Vue SPA:
 
 ## Structure
 ```
-.laravel-app
-├── app
-│   ├── Enums
-│   ├── Exceptions
-│   ├── Http
+.app
+├── Domain
+│   └── User
+│       ├── Actions
+│       ├── DTO
+│       ├── Entities
+│       └── Repositories
+├── Http
+│   ├── Api
 │   │   ├── Controllers
-│   │   │   ├── Api
-│   │   │   │   └── AuthApiController.php
-│   │   │   └── Controller.php
+│   │   ├── Exceptions
 │   │   ├── Middleware
-│   │   │   └── ApiAuthMiddleware.php
 │   │   ├── Requests
-│   │   │   └── Auth
-│   │   │       └── LoginRequest.php
 │   │   └── Resources
-│   │       └── Auth
-│   │           └── AuthResource.php
+│   └── Web
+│   │   ├── Controllers
+│   │   ├── Exceptions
+│   │   ├── Middleware
+│   │   ├── Requests
+│   │   └── Resources
+├── Infrastructures
 │   ├── Models
-│   │   └── User.php
-│   ├── Providers
-│   │   ├── AppServiceProvider.php
-│   │   ├── RepositoryServiceProvider.php
-│   │   └── RouteServiceProvider.php
-│   ├── Repositories
-│   │   ├── Contracts
-│   │   │   └── UserRepository.php
-│   │   └── UserRepositoryEloquent.php
-│   ├── Services
-│   │   └── User
-│   │       └── AuthService.php
-│   └── Traits
-├── artisan
-├── bootstrap
-├── config
-├── database
-│   ├── factories
-│   ├── migrations
-│   └── seeders
-├── public
-├── resources
-│   ├── css
-│   ├── js
-│   └── views
-├── routes
-├── storage
-│   ├── app
-│   ├── framework
-│   └── logs
-├── tests
-└── vendor
+│   └── Repositories
+├── ...
+
 ```
 
 Main folders:
-
-- Controller: receives HTTP requests from the client and decides what to do with them
-- Service: separates complex business logic from the controller. Instead of handling all logic in the controller, a service class will take care of this.
-- Repository: handles querying data from the database
-- Resource: formats the returned data
-- Model: represents the database table
+- Domain: this folder contains the business logic of the application.
+  - Actions: contains the actions that the application can perform.
+  - DTO: contains the data transfer objects.
+  - Entities: contains the entities of the application.
+  - Repositories: contains the repositories of the application.
+- Http: contains the controllers, requests, resources, and middleware.
+  - Api: contains the controllers, requests, resources, and middleware for the API.
+  - Web: contains the controllers, requests, resources, and middleware for the web.
+- Infrastructures: contains the models and repositories.
 
 ## ⚡️ How to install
 
