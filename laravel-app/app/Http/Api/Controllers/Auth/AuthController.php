@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Api\Controllers;
+namespace App\Http\Api\Controllers\Auth;
 
 use App\Domain\User\Actions\LoginJwtAction;
 use App\Domain\User\Actions\LogoutJwtAction;
 use App\Domain\User\Actions\RefreshJwtAction;
-use App\Domain\User\DTO\LoginDTO;
 use App\Http\Api\Requests\Auth\LoginRequest;
 use App\Http\Api\Resources\Auth\AuthResource;
+use App\Http\Web\Controllers\Controller;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
@@ -16,8 +16,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request, LoginJwtAction $loginJwtAction): JsonResponse
     {
         try {
-            $loginDTO = LoginDTO::fromRequest($request->validated());
-            $response = $loginJwtAction->handle($loginDTO);
+            $response = $loginJwtAction($request->toDTO());
 
             return $this->sendResponse(AuthResource::make($response));
         } catch (Exception $e) {
@@ -28,7 +27,7 @@ class AuthController extends Controller
     public function logout(LogoutJwtAction $logoutJwtAction): JsonResponse
     {
         try {
-            $response = $logoutJwtAction->handle();
+            $response = $logoutJwtAction();
 
             return $this->sendResponse($response);
         } catch (Exception $e) {
@@ -39,7 +38,7 @@ class AuthController extends Controller
     public function refresh(RefreshJwtAction $refreshJwtAction): JsonResponse
     {
         try {
-            $response = $refreshJwtAction->handle();
+            $response = $refreshJwtAction();
 
             return $this->sendResponse(AuthResource::make($response));
         } catch (Exception $e) {

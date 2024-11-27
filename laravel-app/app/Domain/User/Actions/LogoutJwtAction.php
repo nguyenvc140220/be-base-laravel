@@ -5,7 +5,7 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class LogoutJwtAction
 {
-    public function handle()
+    public function __invoke()
     {
         JWTAuth::invalidate(JWTAuth::getToken());
 

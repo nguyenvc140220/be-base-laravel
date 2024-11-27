@@ -5,7 +5,7 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class RefreshJwtAction
 {
-    public function handle()
+    public function __invoke()
     {
         $token = JWTAuth::refresh(JWTAuth::getToken());
 

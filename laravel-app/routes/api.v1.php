@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Api\Controllers\AuthController;
+use App\Http\Api\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);

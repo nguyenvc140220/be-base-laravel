@@ -2,26 +2,39 @@
 
 namespace App\Http\Api\Requests\Auth;
 
+use App\Domain\User\DTO\LoginDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest {
-    public function authorize(): bool {
+class LoginRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
         return true;
     }
 
-    public function rules(): array {
+    public function rules(): array
+    {
         return [
-            'email'     => 'required|email',
-            'password'  => 'required|string'
+            'email' => 'required|email',
+            'password' => 'required|string'
         ];
     }
 
-    public function messages(): array {
+    public function messages(): array
+    {
         return [
-            'email.required'    => 'Email is required',
-            'email.email'       => 'Email is invalid',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email is invalid',
             'password.required' => 'Password is required',
-            'password.string'   => 'Password must be a string'
+            'password.string' => 'Password must be a string'
         ];
+    }
+
+    public function toDTO()
+    {
+        return new LoginDTO(
+            $this->input('email'),
+            $this->input('password')
+        );
     }
 }

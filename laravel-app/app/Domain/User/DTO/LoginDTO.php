@@ -3,8 +3,8 @@ namespace App\Domain\User\DTO;
 
 class LoginDTO
 {
-    public string $email;
-    public string $password;
+    private string $email;
+    private string $password;
 
     public function __construct(string $email, string $password)
     {
@@ -26,5 +26,15 @@ class LoginDTO
             'email' => $this->email,
             'password' => $this->password
         ];
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }

@@ -14,15 +14,15 @@ class LoginJwtAction
     {
     }
 
-    public function handle(LoginDTO $loginDTO)
+    public function __invoke(LoginDTO $loginDTO)
     {
-        $user = $this->userRepository->findByEmail($loginDTO->email);
+        $user = $this->userRepository->findByEmail($loginDTO->getEmail());
 
         if (!$user) {
             throw new Exception('User not found', Response::HTTP_NOT_FOUND);
         }
 
-        if (!password_verify($loginDTO->password, $user->password)) {
+        if (!password_verify($loginDTO->getPassword(), $user->password)) {
             throw new Exception('Invalid password', Response::HTTP_NOT_FOUND);
         }
 
