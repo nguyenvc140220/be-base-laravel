@@ -27,3 +27,7 @@ bash:
 	docker compose exec app bash
 exportapi:
 	docker compose exec app php artisan laravel-request-docs:export
+extensions-linux:
+	cat .vscode/extensions | xargs -L 1 code --install-extension
+extensions-windows:
+	cat .vscode/extensions |% { code --install-extension $_}

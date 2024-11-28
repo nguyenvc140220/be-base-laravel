@@ -98,15 +98,16 @@ Make sure the following are installed:
 
 ### VS code setup
 
-- setup extensions on Linux / Mac:
-  ```
-    cat .vscode/extensions | xargs -L 1 code --install-extension
-  ```
-- on Window:
-  ```
-    cat .vscode/extensions |% { code --install-extension $_}
-  ```
-- Reload Window: Cmd+Shift+P (MAC) or Ctrl+Shift+P (Windows) and typing: 'Reload Window'
+```bash
+### setup extensions on Linux / Mac:
+  $ make extensions-linux
+
+### on Windows:
+  $ make extensions-windows
+
+### Reload Window:
+### Cmd+Shift+P (MAC) or Ctrl+Shift+P (Windows) -> 'Reload Window'
+```
 
 ### Docker
 
