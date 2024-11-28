@@ -47,6 +47,7 @@ The following Sanctum features are implemented in this Vue SPA:
 - ✅ Automatic Api Documentation -- route /api-docs
 
 ## Structure
+
 ```
 .app
 ├── Domain
@@ -76,6 +77,7 @@ The following Sanctum features are implemented in this Vue SPA:
 ```
 
 Main folders:
+
 - Domain: this folder contains the business logic of the application.
   - Actions: contains the actions that the application can perform.
   - DTO: contains the data transfer objects.
@@ -93,15 +95,34 @@ Main folders:
 Make sure the following are installed:
 
 - Docker Desktop
-- mkcert
-  [mkcert](https://www.howtoforge.com/how-to-create-locally-trusted-ssl-certificates-with-mkcert-on-ubuntu/)
+
+### VS code setup
+
+```bash
+### setup extensions on Linux / Mac:
+  $ make extensions-linux
+
+### on Windows:
+  $ make extensions-windows
+
+### Reload Window:
+### Cmd+Shift+P (MAC) or Ctrl+Shift+P (Windows) -> 'Reload Window'
+```
 
 ### Docker
 
-1. Clone this repository
-2. Run `make init`: This command will build the docker image and run the container
-3. Run project in next times: `make start`
-4. Stop project: `make stop`
+```bash
+# run first time
+$ make init
+
+# run project in next times:
+$ make start
+
+# run front-end
+$ cd laravel-app
+$ npm install
+$ npm run dev
+```
 
 ## Conventions
 
@@ -156,5 +177,6 @@ Below are some common conventions when building **RESTful API** or **GraphQL API
 - **403 Forbidden**: No permission to access the resource.
 
 ## API documents
+
 View in the browser on /request-docs/
 https://github.com/rakutentech/laravel-request-docs?tab=readme-ov-file
