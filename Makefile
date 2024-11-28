@@ -23,6 +23,7 @@ destroy:
 	docker compose down --rmi all --volumes
 wait-for-mysql:
 	until (docker compose exec db mysqladmin ping &>/dev/null) do echo 'waiting for mysql wake up...' && sleep 3; done
-
+bash:
+	docker compose exec app bash
 exportapi:
 	docker compose exec app php artisan laravel-request-docs:export
