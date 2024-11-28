@@ -4,6 +4,9 @@ use App\Http\Api\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('password/forgot', [AuthController::class, 'forgotPassword']);
+Route::post('password/reset', [AuthController::class, 'resetPassword']);
+
 Route::middleware(['auth'])
     ->group(function () {
         Route::post('logout', [AuthController::class, 'logout']);

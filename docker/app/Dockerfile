@@ -12,8 +12,15 @@ RUN apt-get update && \
      libzip-dev \
      lsb-release \
      ffmpeg \
-     libmemcached-dev
+     libmemcached-dev \
+     sendmail \
+     mailutils
 RUN docker-php-ext-install pdo_mysql
+
+RUN echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini
+RUN sed -i '/#!\/bin\/sh/aservice sendmail restart' /usr/local/bin/docker-php-entrypoint
+RUN sed -i '/#!\/bin\/sh/aecho "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint
+
 WORKDIR /var/www/html
 # php composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer

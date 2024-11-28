@@ -2,12 +2,16 @@
 
 namespace App\Http\Api\Controllers\Auth;
 
+use App\Domain\User\Actions\ForgotPasswordAction;
 use App\Domain\User\Actions\LoginJwtAction;
 use App\Domain\User\Actions\LogoutJwtAction;
 use App\Domain\User\Actions\RefreshJwtAction;
+use App\Domain\User\Actions\ResetPasswordAction;
+use App\Http\Api\Controllers\Controller;
+use App\Http\Api\Requests\Auth\ForgotPasswordRequest;
 use App\Http\Api\Requests\Auth\LoginRequest;
+use App\Http\Api\Requests\Auth\ResetPasswordRequest;
 use App\Http\Api\Resources\Auth\AuthResource;
-use App\Http\Web\Controllers\Controller;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
@@ -41,6 +45,29 @@ class AuthController extends Controller
             $response = $refreshJwtAction();
 
             return $this->sendResponse(AuthResource::make($response));
+        } catch (Exception $e) {
+            return $this->sendError($e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function forgotPassword(ForgotPasswordRequest $request, ForgotPasswordAction $forgotPasswordAction): JsonResponse
+    {
+        try {
+            $email = $request->validated('email');
+            $response = $forgotPasswordAction($email);
+
+            return $this->sendResponse($response);
+        } catch (Exception $e) {
+            return $this->sendError($e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function resetPassword(ResetPasswordRequest $request, ResetPasswordAction $resetPasswordAction): JsonResponse
+    {
+        try {
+            $response = $resetPasswordAction($request->toDTO());
+
+            return $this->sendResponse($response);
         } catch (Exception $e) {
             return $this->sendError($e->getMessage(), $e->getCode());
         }
