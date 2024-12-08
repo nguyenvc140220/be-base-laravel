@@ -38,6 +38,6 @@ class ResetPasswordRequest extends FormRequest
 
     public function toDTO()
     {
-        return ResetPasswordDTO::fromRequest($this->only(['token', 'email', 'password']));
+        return ResetPasswordDTO::fromRequest($this->validated());
     }
 }
