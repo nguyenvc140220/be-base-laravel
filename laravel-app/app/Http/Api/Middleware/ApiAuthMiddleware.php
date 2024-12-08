@@ -2,6 +2,7 @@
 
 namespace App\Http\Api\Middleware;
 
+use App\Enums\UserRoleEnum;
 use App\Traits\ApiResponseTrait;
 use Closure;
 use Exception;
@@ -15,9 +16,7 @@ class ApiAuthMiddleware
 {
     use ApiResponseTrait;
 
-    protected $jwt;
-
-    public function __construct(JWTAuth $jwt)
+    public function __construct(protected JWTAuth $jwt)
     {
         $this->jwt = $jwt;
     }
@@ -30,14 +29,24 @@ class ApiAuthMiddleware
      *
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $role = null)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
         try {
             $user = $this->jwt->parseToken()->authenticate();
 
-            if (!$user || (isset($role) && $user->role !== $role)) {
-                return $this->sendError('Unauthorized', Response::HTTP_UNAUTHORIZED);
+            if (!$user) {
+                return $this->sendError('Not login yet!!', Response::HTTP_UNAUTHORIZED);
             }
+
+            if ($user->role === UserRoleEnum::Admin->value) {
+                return $next($request);
+            }
+
+            if (!in_array($user->role, $roles)) {
+                return $this->sendError('Unauthorized', Response::HTTP_FORBIDDEN);
+            }
+
+            return $next($request);
         } catch (TokenExpiredException $e) {
             return $this->sendError('Token is expired', Response::HTTP_UNAUTHORIZED);
         } catch (JWTException $e) {
@@ -45,7 +54,5 @@ class ApiAuthMiddleware
         } catch (Exception $e) {
             return $this->sendError($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
-
-        return $next($request);
     }
 }
