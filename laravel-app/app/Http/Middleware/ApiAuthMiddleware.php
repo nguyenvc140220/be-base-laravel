@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Api\Middleware;
+namespace App\Http\Middleware;
 
 use App\Enums\UserRoleEnum;
 use App\Traits\ApiResponseTrait;

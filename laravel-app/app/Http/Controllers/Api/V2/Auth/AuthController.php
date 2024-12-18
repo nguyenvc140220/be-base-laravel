@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Api\Controllers\Auth;
+namespace App\Http\Controllers\Api\V2\Auth;
 
 use App\Domain\User\Actions\ForgotPasswordAction;
 use App\Domain\User\Actions\LoginJwtAction;
 use App\Domain\User\Actions\LogoutJwtAction;
 use App\Domain\User\Actions\RefreshJwtAction;
 use App\Domain\User\Actions\ResetPasswordAction;
-use App\Http\Api\Controllers\Controller;
-use App\Http\Api\Requests\Auth\ForgotPasswordRequest;
-use App\Http\Api\Requests\Auth\LoginRequest;
-use App\Http\Api\Requests\Auth\ResetPasswordRequest;
-use App\Http\Api\Resources\Auth\AuthResource;
+use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\Auth\ForgotPasswordRequest;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\ResetPasswordRequest;
+use App\Http\Resources\Auth\AuthResource;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
