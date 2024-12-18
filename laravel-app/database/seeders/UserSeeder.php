@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\UserRoleEnum;
-use Database\Factories\UserFactory;
+use App\Infrastructures\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,11 +13,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'test@admin.com',
             'role' => UserRoleEnum::Admin->value
         ]);
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'test@example.com',
             'role' => UserRoleEnum::User->value
         ]);

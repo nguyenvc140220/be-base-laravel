@@ -47,4 +47,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return ['email_verified_at' => 'datetime', 'password' => 'hashed',];
     }
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 }
