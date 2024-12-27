@@ -35,18 +35,29 @@ This is a base api project developed by OACP team. It is built on top of Laravel
 │       ├── Entities
 │       └── Repositories
 ├── Http
-│   ├── Api
-│   │   ├── Controllers
-│   │   ├── Exceptions
-│   │   ├── Middleware
-│   │   ├── Requests
-│   │   └── Resources
-│   └── Web
-│   │   ├── Controllers
-│   │   ├── Exceptions
-│   │   ├── Middleware
-│   │   ├── Requests
-│   │   └── Resources
+│   ├── Controllers
+│   │   ├── Api
+│   │   │   ├── Controller.php
+│   │   │   ├── V1
+│   │   │   │   └── Auth
+│   │   │   │       └── AuthController.php
+│   │   │   └── V2
+│   │   │       └── Auth
+│   │   │           └── AuthController.php
+│   │   └── Web
+│   │       └── Controller.php
+│   ├── Exceptions
+│   │   └── ApiExceptionHandler.php
+│   ├── Middleware
+│   │   └── ApiAuthMiddleware.php
+│   ├── Requests
+│   │   └── Auth
+│   │       ├── ForgotPasswordRequest.php
+│   │       ├── LoginRequest.php
+│   │       └── ResetPasswordRequest.php
+│   └── Resources
+│       └── Auth
+│           └── AuthResource.php
 ├── Infrastructures
 │   ├── Models
 │   └── Repositories
