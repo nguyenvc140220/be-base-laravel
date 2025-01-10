@@ -1,30 +1,34 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Infrastructures\Repositories;
 
-use App\Models\User;
-use App\Repositories\Contracts\UserRepository;
+use App\Domain\User\Repositories\UserRepository;
+use App\Infrastructures\Models\User;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
-class UserRepositoryEloquent extends BaseRepository implements UserRepository {
+class UserRepositoryEloquent extends BaseRepository implements UserRepository
+{
     /**
      * Specify Model class name
      *
      * @return string
      */
-    public function model() {
+    public function model()
+    {
         return User::class;
     }
 
     /**
      * Boot up the repository, pushing criteria
      */
-    public function boot() {
+    public function boot()
+    {
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function findByEmail(string $email) {
+    public function findByEmail(string $email)
+    {
         return $this->model
             ->where('email', $email)
             ->first();

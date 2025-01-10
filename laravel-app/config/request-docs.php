@@ -68,7 +68,7 @@ return [
         'title' => 'Laravel Project Base',
         'description' => 'Laravel Request Docs',
         // default version that this library provides
-        'version' => '1.0.0',
+        'version' => '3.1.0',
         // changeable
         'document_version' => '1.0.0',
         // license that you want to display
