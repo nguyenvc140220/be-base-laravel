@@ -15,11 +15,13 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'email' => 'test@admin.com',
-            'role' => UserRoleEnum::Admin->value
+            'role' => UserRoleEnum::Admin->value,
+            'password' => bcrypt('password')
         ]);
         User::factory()->create([
             'email' => 'test@example.com',
-            'role' => UserRoleEnum::User->value
+            'role' => UserRoleEnum::User->value,
+            'password' => bcrypt('password')
         ]);
     }
 }
