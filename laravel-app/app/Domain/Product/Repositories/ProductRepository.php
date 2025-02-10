@@ -6,5 +6,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 
 interface ProductRepository extends RepositoryInterface
 {
-  public function getProducts(string $email);
+  public function getProducts(string $name);
 }

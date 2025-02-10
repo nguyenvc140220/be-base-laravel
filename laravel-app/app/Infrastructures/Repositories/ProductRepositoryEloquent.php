@@ -30,7 +30,6 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
   public function getProducts(string $name)
   {
     return $this->model
-      ->where('name',  'LIKE', '%' . $name . '%')
-    ;
+      ->where('name',  'LIKE', '%' . $name . '%');
   }
 }

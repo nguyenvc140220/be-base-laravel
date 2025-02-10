@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -19,7 +20,7 @@ Route::prefix('v1')->group(function () {
             })->middleware('auth:admin');
 
             Route::get('product', function () {
-                return [];
+                return [ProductController::class, 'getProducts'];
             })->middleware('auth:user');
         });
 });
