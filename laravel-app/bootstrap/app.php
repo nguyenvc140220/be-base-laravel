@@ -27,6 +27,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 return app(ApiExceptionHandler::class)->renderApiException($exception);
             }
 
-            return parent::render($request, $exception);
+            return;
         });
     })->create();
